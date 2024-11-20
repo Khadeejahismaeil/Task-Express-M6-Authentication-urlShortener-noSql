@@ -12,17 +12,18 @@ exports.localStrategy = new LocalStrategy(async (username, password, done) => {
   try {
     const user = await User.findOne({ username });
     if (!user) {
-      console.log("User not found");
+      console.log("User not found for username:", username);
       return done(null, false);
     }
+    console.log("User found:", user);
 
     const passwordsMatch = await bcrypt.compare(password, user.password);
     if (!passwordsMatch) {
-      console.log("Passwords do not match");
+      console.log("Passwords do not match for user:", username);
       return done(null, false);
     }
 
-    console.log("Authentication successful for user:", user);
+    console.log("Authentication successful for user:", user.username);
     return done(null, user);
   } catch (error) {
     console.error("Error in localStrategy:", error.message);

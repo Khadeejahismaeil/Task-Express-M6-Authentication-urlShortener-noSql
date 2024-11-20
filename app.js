@@ -11,8 +11,8 @@ const app = express();
 connectDb();
 
 app.use(passport.initialize());
-passport.use(localStrategy);
-passport.use(jwtStrategy);
+passport.use("local", localStrategy);
+passport.use("jwt", jwtStrategy);
 
 app.use(express.json());
 
