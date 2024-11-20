@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const URLSchema = new mongoose.Schema({
   urlCode: String,
@@ -6,8 +6,8 @@ const URLSchema = new mongoose.Schema({
   shortUrl: String,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
 });
 
-module.exports = mongoose.model('Url', URLSchema);
+module.exports = mongoose.model("Url", URLSchema);
